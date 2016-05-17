@@ -5,6 +5,8 @@ from django.template import Context
 from django.shortcuts import render_to_response, redirect
 from article.models import Article, Comments
 from django.core.exceptions import ObjectDoesNotExist
+from article.forms import CommentForm
+from django.core.context_processors import csrf
 
 
 # Create your views here.
@@ -27,8 +29,14 @@ def template_three_simple(request):
 def articles(request):
     return render_to_response('articles.html', {'articles': Article.objects.all()})
 
-def article(request, article_id=1):
-    return render_to_response('article.html', {'article': Article.objects.get(id=article_id), 'comments': Comments.objects.filter(comments_article_id=article_id)})
+def article(request, acticle_id=1):
+    comment_form = CommentForm
+    args = {}
+    args.update(csrf(request))
+    args['article'] = Article.objects.get(id=article_id)
+    args['comments'] = Comments.objects.filter(comments_article_id=article_id)
+    args['form'] = comment_form
+    return render_to_response('article.html', args)
 
 def addlike(reguest, article_id):
     try:

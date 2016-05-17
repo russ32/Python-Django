@@ -1,8 +1,9 @@
 # -*- coding: utf-8  -*-
 
 from django.forms import ModelForm
-from models import Comments
+from article.models import Comments
 
-class CommentForm(ModelFrom):
+class CommentForm(ModelForm):
     class Meta:
         model = Comments
+        fields = '__all__'
