@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#TEMPLATE_DIRS = (
+#    '/home/ruslan/projects/djangoenv/bin/firstapp/templates',
+#    '/home/ruslan/projects/djangoenv/bin/firstapp/article/templates',
+#    '/home/ruslan/projects/djangoenv/bin/firstapp/loginsys/templates',
+#)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'article',
+    'loginsys',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -58,6 +65,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'article' 'templates'),
+            os.path.join(BASE_DIR, 'loginsys' 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
